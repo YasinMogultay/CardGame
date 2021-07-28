@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html id="header.html" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+</head>
+<body>
+
+<header th:fragment="header(content)" class="container my-3">
+    <h1 class="my-3 text-center display-4" th:text="${content}"></h1>
+</header>
+
+</body>
+</html>
