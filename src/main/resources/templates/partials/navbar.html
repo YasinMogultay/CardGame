@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -8,10 +8,13 @@
 
 <nav th:fragment="navbar" class="navbar navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand">Navbar</a>
+        <a class="navbar-brand">Card Game</a>
         <div class="d-flex">
-            <button class="btn btn-outline-primary me-2" type="submit">Login</button>
-            <button class="btn btn-outline-success" type="submit">Sign-up</button>
+            <a th:href="@{/login}" sec:authorize="!isAuthenticated()" class="btn btn-outline-primary me-2" type="button">Login</a>
+            <a th:href="@{/sign-up}" sec:authorize="!isAuthenticated()" class="btn btn-outline-success" type="button">Sign-up</a>
+            <form th:action="@{/logout}" sec:authorize="isAuthenticated()" th:method="post">
+                <button class="btn btn-outline-danger">Logout</button>
+            </form>
         </div>
     </div>
 </nav>
