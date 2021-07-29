@@ -1,4 +1,4 @@
-import Deck from "templates/deck.js"
+import Deck from "../templates/deck.js"
 
 const CARD_VALUE_MAP = {
     "2": 2,
