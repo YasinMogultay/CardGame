@@ -90,8 +90,8 @@
 <!--Navbar-->
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-<h2 class="my-3 text-center display-4"><span style="color: green">Green</span> deck is yours <span style="color: blue">Blue</span>
-    deck is Computer To play a game click to deck</h2>
+<h2 class="my-3 text-center display-4 container"><span style="color: green">Green</span> deck is yours <span style="color: blue">Blue</span>
+    deck is Computer <br>To play a game click to deck or anywhere in the page</h2>
 <!--User Score Update div-->
 <div class="text-center">
     <form th:action="@{'/home'}" th:method="post" th:object="${user}">

@@ -5,8 +5,20 @@
 <!--Navbar-->
 <nav th:replace="partials/navbar :: navbar"></nav>
 
-<header th:replace="partials/header :: header('Welcome Page')"></header>
-
+<!--How It Works-->
+<div class="row container-fluid mt-5 text-center">
+    <div class="row-6">
+        <header th:replace="partials/header :: header('How it Works')"></header>
+    </div>
+    <div class="row-6">
+        <h4>
+            War is a card game for player and AI. A standard deck of 52 cards is dealt so that both player and AI have 26 cards.
+            During each round of play (or "battle"), both player and AI play a card from the top of their hand face up.
+            The player who plays the card of the higher rank wins both cards and places them at the bottom of his stack of
+            cards. If both cards played are of the same rank then you just both keep your card.
+        </h4>
+    </div>
+</div>
 <!--Scripts-->
 <script th:replace="partials/scripts :: scripts"></script>
 </body>
