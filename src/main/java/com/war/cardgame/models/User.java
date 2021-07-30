@@ -11,23 +11,27 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = true, unique = true)
     private String username;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = true, unique = true)
     private String email;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String password;
+
+    @Column(nullable = true)
+    private long score;
 
     public User() {
     }
 
-    public User(long id, String username, String email, String password) {
+    public User(long id, String username, String email, String password, long score) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
+        this.score = score;
     }
 
     public User(User copy) {
@@ -68,4 +72,17 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public long getScore() {
+        return score;
+    }
+
+    public void setScore(long score) {
+        this.score = score;
+    }
+
+    public long updateScore(long score) {
+        return score=score + (score);
+    }
+
 }

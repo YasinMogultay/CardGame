@@ -44,12 +44,39 @@ public class UserController {
         return "redirect:/home";
     }
 
-    @GetMapping("/home")
-    public String showHomePage(Model model){
-        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("user", loggedInUser);
+//    @GetMapping("/home")
+//    public String showHomePage(Model model){
+//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        model.addAttribute("user", loggedInUser);
+//        return "/home";
+//    }
+//
+//
+//    @PostMapping("/home")
+//    public String editScore(@ModelAttribute User user, @RequestParam(name = "score") long score) {
+//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        loggedInUser.setScore(score);
+//        usersDao.save(user);
+//        System.out.println(score);
+//        return "/home";
+//    }
+
+    @GetMapping("/home/{id}")
+    public String showHome(@PathVariable long id, Model model){
+        User user = usersDao.getOne(id);
+        model.addAttribute("user", user);
         return "/home";
     }
+
+    @PostMapping("/home/{id}")
+    public String editScore(@ModelAttribute User user, @RequestParam(name = "score") long score) {
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        loggedInUser.setScore(score);
+        usersDao.save(user);
+        System.out.println(score);
+        return "/home";
+    }
+
 
 
 }
