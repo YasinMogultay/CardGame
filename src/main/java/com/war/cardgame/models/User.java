@@ -17,7 +17,7 @@ public class User {
     @Column(nullable = true, unique = true)
     private String email;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String password;
 
     @Column(nullable = true)
@@ -82,7 +82,7 @@ public class User {
     }
 
     public long updateScore(long score) {
-        return score=score + (score);
+        return score = score + (score);
     }
 
 }

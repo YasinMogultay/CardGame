@@ -6,7 +6,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -35,7 +34,7 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String showLoginForm(){
+    public String showLoginForm() {
         return "/login";
     }
 
@@ -44,39 +43,34 @@ public class UserController {
         return "redirect:/home";
     }
 
-//    @GetMapping("/home")
-//    public String showHomePage(Model model){
-//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        model.addAttribute("user", loggedInUser);
-//        return "/home";
-//    }
-//
-//
-//    @PostMapping("/home")
-//    public String editScore(@ModelAttribute User user, @RequestParam(name = "score") long score) {
-//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        loggedInUser.setScore(score);
-//        usersDao.save(user);
-//        System.out.println(score);
-//        return "/home";
-//    }
-
-    @GetMapping("/home/{id}")
-    public String showHome(@PathVariable long id, Model model){
-        User user = usersDao.getOne(id);
-        model.addAttribute("user", user);
-        return "/home";
+    @GetMapping("/home")
+    public String showEditUser(Model model) {
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal(); //Getting logged in user
+        usersDao.getOne(loggedInUser.getId()); //getting that user by id of logged in user
+        model.addAttribute("user", usersDao.getOne(loggedInUser.getId())); //adding that user object
+        return "home";
     }
 
-    @PostMapping("/home/{id}")
-    public String editScore(@ModelAttribute User user, @RequestParam(name = "score") long score) {
+    @PostMapping("/home")
+    public String editUser(@ModelAttribute User user,
+                           @RequestParam(name = "password") String password,
+                           @RequestParam(name = "username") String username,
+                           @RequestParam(name = "email") String email,
+                           @RequestParam(name = "score") long score
+    ) {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        loggedInUser.setScore(score);
-        usersDao.save(user);
-        System.out.println(score);
-        return "/home";
+        User userId = usersDao.getOne(loggedInUser.getId());
+        String hash = passwordEncoder.encode(password);
+
+        //setting the username email and password
+        userId.setPassword(hash);
+        userId.setUsername(username);
+        userId.setEmail(email);
+        userId.setScore(score);
+
+        //saving those changes to the user
+        usersDao.save(userId);
+        return "redirect:/home";
     }
-
-
 
 }
