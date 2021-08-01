@@ -6,22 +6,21 @@
 <nav th:replace="partials/navbar :: navbar"></nav>
 <!--Welcome Pitch-->
 <div class="row container-fluid mt-5 text-center">
-    <div class="row-6">
-        <header th:replace="partials/header :: header('Welcome to War The Card Game')"></header>
-        <img src="https://cardgamebase.com/wp-content/uploads/Best-Gifts-for-Bridge-Players-Banner.jpg" alt="img" style="width: 1800px; height: 400px">
+    <div class="row-6 mb-4">
+        <div style="font-size: 80px; background-color: antiquewhite">WAR THE CARD GAME</div>
     </div>
     <div class="row-6">
         <h4>
             To play a game please Sign-up and then Login your account you will be redirected to Game Page <br>
-            <a th:href="@{/login}"  class="btn btn-primary me-2 btn-large" type="button">Login</a>
-            <a th:href="@{/sign-up}"  class="btn btn-success" type="button">Sign-up</a>
+            <a th:href="@{/login}"  class="btn btn-primary me-2 btn-large mt-3" type="button">Login</a>
+            <a th:href="@{/sign-up}"  class="btn btn-success mt-3" type="button">Sign-up</a>
         </h4>
     </div>
 </div>
 <!--How It Works-->
 <div class="row container-fluid mt-5 text-center">
-    <div class="row-6">
-        <header th:replace="partials/header :: header('How it Works')"></header>
+    <div class="row-6 mb-4">
+        <div style="font-size: 80px; background-color: antiquewhite">HOW IT WORKS</div>
     </div>
     <div class="row-6">
         <h4>

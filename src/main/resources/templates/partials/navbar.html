@@ -8,8 +8,8 @@
 
 <nav th:fragment="navbar" class="navbar navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" sec:authorize="!isAuthenticated()" th:href="@{/}">Card Game</a>
-        <a class="navbar-brand" sec:authorize="isAuthenticated()" th:href="@{/home}">Card Game</a>
+        <a class="navbar-brand" sec:authorize="!isAuthenticated()" th:href="@{/}" style="color: dodgerblue">War The Card Game</a>
+        <a class="navbar-brand" sec:authorize="isAuthenticated()" th:href="@{/home}" style="color: dodgerblue">War The Card Game</a>
         <div class="d-flex">
             <a th:href="@{/login}" sec:authorize="!isAuthenticated()" class="btn btn-outline-primary me-2" type="button">Login</a>
             <a th:href="@{/sign-up}" sec:authorize="!isAuthenticated()" class="btn btn-outline-success" type="button">Sign-up</a>
