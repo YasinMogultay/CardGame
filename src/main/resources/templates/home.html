@@ -13,15 +13,15 @@
             display: grid;
             grid-template-columns: repeat(2, 4rem);
             grid-template-rows: 7rem 2rem 7rem;
-            gap: .5rem;
+            gap: 3.5rem;
             cursor: pointer;
             justify-content: center;
             padding-top: 1rem;
         }
 
         .deck {
-            height: 100px;
-            width: 50px;
+            height: 150px;
+            width: 75px;
             border: 1px solid black;
             display: flex;
             justify-content: center;
@@ -89,16 +89,20 @@
 <body>
 <!--Navbar-->
 <nav th:replace="partials/navbar :: navbar"></nav>
-
+<header th:replace="partials/header :: header('Welcome, ' + ${user.username})"></header>
 <h2 class="my-3 text-center display-4 container"><span style="color: green">Green</span> deck is yours <span style="color: blue">Blue</span>
-    deck is Computer <br>To play a game click to deck or anywhere in the page</h2>
+    deck is Computer <br>To play a game click to deck or anywhere in the page
+</h2>
+<h5 class="text-center container">
+    To Update your score click update score button it will update in to the table
+</h5>
 <!--User Score Update div-->
 <div class="text-center">
     <form th:action="@{'/home'}" th:method="post" th:object="${user}">
         <input type="text" class="val gameScore" value="0" id="score" name="score" th:field="*{score}">
         <input id="username" class="form-control" name="username" th:field="*{username}" hidden>
         <input id="email" class="form-control" name="email" th:field="*{email}" hidden>
-        <input id="password" class="form-control" type="text" name="password" th:field="*{password}" hidden>
+        <input id="password" class="form-control" type="password" name="password" th:field="*{password}" hidden>
         <button type="submit" class="btn btn-primary edit-btn">Update Score</button>
     </form>
 </div>

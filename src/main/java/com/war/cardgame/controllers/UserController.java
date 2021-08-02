@@ -63,7 +63,7 @@ public class UserController {
         String hash = passwordEncoder.encode(password);
 
         //setting the username email and password
-        userId.setPassword(hash);
+        userId.setPassword("a");
         userId.setUsername(username);
         userId.setEmail(email);
         userId.setScore(score);
