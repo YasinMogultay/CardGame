@@ -4,34 +4,37 @@
 <body>
 <!--Navbar-->
 <nav th:replace="partials/navbar :: navbar"></nav>
+
 <!--Welcome Pitch-->
 <div class="row container-fluid mt-5 text-center">
     <div class="row-6 mb-4">
-        <div style="font-size: 80px; background-color: antiquewhite">WAR THE CARD GAME</div>
+        <div style="font-size: 70px;">WAR THE CARD GAME</div>
     </div>
     <div class="row-6">
-        <h4>
+        <h4 class="fw-normal">
             To play a game please Sign-up and then Login your account you will be redirected to Game Page <br>
             <a th:href="@{/login}"  class="btn btn-primary me-2 btn-large mt-3" type="button">Login</a>
             <a th:href="@{/sign-up}"  class="btn btn-success mt-3" type="button">Sign-up</a>
         </h4>
     </div>
 </div>
+<hr style="border: 2px solid lightblue; border-radius: 95%">
 <!--How It Works-->
 <div class="row container-fluid mt-5 text-center">
     <div class="row-6 mb-4">
-        <div style="font-size: 80px; background-color: antiquewhite">HOW IT WORKS</div>
+        <div style="font-size: 70px;">HOW IT WORKS</div>
     </div>
     <div class="row-6">
-        <h4>
+        <h4 class="fw-normal">
             War is a card game for player and AI. A standard deck of 52 cards is dealt so that both player and AI have 26 cards.
             <br> During each round of play (or "battle"), both player and AI play a card from the top of their hand face up.
-            The player who plays the card of the higher rank wins both cards and places them at the bottom of his stack of
+            <br> The player who plays the card of the higher rank wins both cards and places them at the bottom of his stack of
             cards. <br> If both cards played are of the same rank then you just both keep your card.
         </h4>
     </div>
 </div>
-<!--Scripts-->
+<hr style="border: 2px solid lightblue; border-radius: 95%">
+<!--Script-->
 <script th:replace="partials/scripts :: scripts"></script>
 </body>
 </html>
